@@ -1,0 +1,38 @@
+﻿<div>
+    <div v-if="apiData">
+        <!--顶部导航-->
+        <header class="header release-top"></header>
+
+        <div class="top">
+            <img src="/content/front/design/images/user-banner.png" />
+            <div class="home-user about-user">
+                <div class="user-about">
+                    <img v-bind:src="apiData.header">
+                </div>
+                <span>
+                    <h3>{{apiData.name}}</h3>
+                    <p>金币余额：<font class="color-about">{{apiData.golds | money 2}}</font></p>
+                    <a class="certification" href="coin/pay">金币充值</a>
+                </span>
+            </div>
+        </div>
+
+        <div class="wrapbody">
+            <div class="linkwrap">
+                <a href="coin/record"><img src="/content/front/design/images/about-ico01.png" />金币明细</a>
+                <a href="coin/redeem"><img src="/content/front/design/images/about-ico02.png" />金币兑换</a>
+                <a href="bet/history">
+                    <img src="/content/front/design/images/about-ico03.png" />
+                    竞猜历史消息
+                    <span class="tag bg-red fr" v-if="false">3</span>
+                </a>
+                <a href="invite/index"><img src="/content/front/design/images/about-ico04.png" />战友招募</a>
+            </div>
+            <div class="linkwrap">
+                <a href="about"><img src="/content/front/design/images/about-ico05.png" />关于</a>
+                <a @click="btnChangeGameClick('/public/login')"><img src="/content/front/design/images/about-ico06.png" />切换游戏</a>
+            </div>
+        </div>
+    </div>
+
+</div>

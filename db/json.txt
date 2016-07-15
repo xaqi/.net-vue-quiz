@@ -1,0 +1,6 @@
+select json_keys('{"name":"David","mail":"jiangchengyao@gmail.com","address":"Shangahai"}');
+select json_extract(cast('["12:18:29.000000", "2015-07-29", "2015-07-29 12:18:29.000000"]' as json),'$[0]');
+select json_extract(cast('["12:18:29.000000", "2015-07-29", "2015-07-29 12:18:29.000000"]' as json),'$[0]');
+
+
+proc_resolve(json)

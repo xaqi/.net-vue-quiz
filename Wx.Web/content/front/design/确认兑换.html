@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>全民菠菜</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
+<meta name="description" content="">
+<meta name="author" content=""> 
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<link href="bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="style/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="style/alert.css" />
+<!--验证-->
+<script type="text/javascript" src="bootstrap-3.3.5-dist/js/bootstrapValidator.js"></script>
+<link rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrapValidator.css"/>
+</head>
+
+<body>
+<!--顶部导航-->
+<header class="header">
+    <span class="fl">今日竞猜：58960人，500万金币</span>
+    <span class="header-r fr">余额：300金币</span>
+    <a class="rules" href="竞猜规则.html"></a>
+</header>
+<!--主体-->
+<div class="wrap">
+    <div class="con-layer" style=" padding-top:50px; padding-left:0; padding-right:0;">
+        <form id="form" method="post" class="form-horizontal" action="">
+        <div class="form-group">
+            <div class="col-sm-5 inputblwrap ico-user">
+                <input type="text" class="form-control" name="username" placeholder="请输入收货人名称" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-5 inputblwrap ico-phone">
+                <input type="text" class="form-control" name="phone" placeholder="联系电话" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-5 inputblwrap ico-textarea">
+                <textarea  placeholder="备注信息" data-validate="required:必填" class="form-control" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-10 inputblwrap pd-left col-sm-offset-2">
+                <a class="submit-btn" href="">确认兑换</a>
+            </div>
+        </div>
+    </form> 
+    </div>
+</div>
+<footer>
+    <ul class="nav nav-pills">
+      <li class="active"><a class="menu01" href="#">英雄猜</a></li>
+      <li><a class="menu02" href="#">竞猜</a></li>
+      <li><a class="menu03" href="#">个人</a></li>
+    </ul>
+</footer>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#form').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        //group: '.form-group',
+        fields: {            
+            username: {
+                validators: {
+                    notEmpty: {
+                        message: '请输入收货人名称'
+                    },
+                }
+            },
+            phone: {
+                validators: {
+                    notEmpty: {
+                        message: '手机号不能是空的'
+                    },
+                }
+            },
+			
+	     }
+    });
+});
+</script>
+
+
+</body>
+</html>

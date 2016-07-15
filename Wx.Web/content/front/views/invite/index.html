@@ -1,0 +1,36 @@
+﻿<div>
+    <div v-if="apiData">
+
+        <!--顶部导航-->
+        <header class="header release-top">
+            <a href="user" class="btn-l">
+                <img src="/content/front/design/images/back.png" />
+            </a>
+        </header>
+
+        <div class="top">
+            <img src="/content/front/design/images/user-banner.png" />
+            <div class="home-user about-user">
+                <div class="user-about">
+                    <img v-bind:src="apiData.header">
+                </div>
+                <span>
+                    <h3>{{apiData.name}}</h3>
+                    <p>战友奖励：<font class="color-about">0.00</font></p>
+
+                </span>
+            </div>
+        </div>
+
+
+        <div class="wrapbody">
+            <div class="linkwrap">
+                <a href="invite/qrcode">我的二维码</a>
+                <a href="invite/myfriends">我的战友</a>
+                <a href="invite/about">战友招募说明</a>
+
+            </div>
+        </div>
+
+    </div>
+</div>

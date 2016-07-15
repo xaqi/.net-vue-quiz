@@ -1,0 +1,27 @@
+﻿<div>
+    <div class="box" v-if="showMask" style="display:block;"></div>
+    <div class="layer" style="display:block;" v-if="submitform.data">
+        <div class="con-layer">
+            <span>{{submitform.data.quiz.subject}}  {{submitform.data.quiz.bet.startTime | time}}</span>
+            <h4>（{{submitform.data.option.subject}} {{submitform.data.option.odds | money 2}} ）</h4>
+            <div class="form-group">
+                <div class="input-box">
+                    <label>竞猜金额&nbsp;&nbsp;|&nbsp;&nbsp;</label>
+                    <input v-model="submitform.golds" v-focus-auto number type="number" class="form-control" name="goldname" placeholder="最低投注1金币" />
+                </div>
+            </div>
+            <div class="money"><label>可能奖金 ：</label>{{expect_income|money 1}}金币</div>
+            <div class="money"><label>当前余额 ：</label>{{submitform.user_balance|money 0}}金币</div>
+        </div>
+        <div class="bnt-con">
+            <a class="hint-in1 hint" @click="submitClick">确  定</a>
+            <a class="hint-in2 cancel" @click="cancelClick">取消</a>
+        </div>
+    </div>
+    <div class="layer" style="display:block" v-if="messageform.message">
+        <div class="con-layer">
+            <p style=" font-size:18px; padding:20px 0; margin:0">{{messageform.message}}</p>
+        </div>
+        <div class="bnt-con"><a class="hint-in3" @click="messageOKClick">确  定</a></div>
+    </div>
+</div>

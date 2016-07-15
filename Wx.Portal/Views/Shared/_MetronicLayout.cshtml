@@ -1,0 +1,208 @@
+﻿@{
+
+    Layout = null;
+    var userInfo = Session["UserInfo"] as Wx.Portal.Controllers.UserInfo;
+}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>电竞管理</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <base href="~/front/" />
+
+    <link href="~/front/css" rel="stylesheet" type="text/css" />
+
+    <link rel="shortcut icon" href="favicon.png" />
+</head>
+
+<body class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo">
+    <div class="page-header navbar navbar-fixed-top">
+        <div class="page-header-inner ">
+            <div class="page-logo">
+                <a href="/">
+                    <img src="assets/layouts/layout4/img/logo-light.png" alt="logo" class="logo-default" />
+                </a>
+                <div class="menu-toggler sidebar-toggler">
+                </div>
+            </div>
+
+            <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
+
+            @*<div class="page-actions">
+                <div class="btn-group">
+                    <button type="button" class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        <span class="hidden-sm hidden-xs">Actions&nbsp;</span>
+                        <i class="fa fa-angle-down"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="javascript:;">
+                                <i class="icon-docs"></i> New Post
+                            </a>
+                        </li>
+                        <li class="divider"> </li>
+
+                    </ul>
+                </div>
+            </div>*@
+
+            <div class="page-top">
+
+
+
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="separator hide"> </li>
+
+                        @*<li class="dropdown dropdown-extended dropdown-notification dropdown-dark" id="header_notification_bar">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <i class="icon-bell"></i>
+                                <span class="badge badge-success"> 7 </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="external">
+                                    <h3>
+                                        <span class="bold">12 pending</span> notifications
+                                    </h3>
+                                    <a href="page_user_profile_1.html">view all</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="separator hide"> </li>*@
+
+
+                        <li class="dropdown dropdown-user dropdown-dark">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <span class="username username-hide-on-mobile"> @userInfo.name </span>
+                                <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
+                                <img alt="" class="img-circle" src="@userInfo.header" />
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-default">
+                                @*<li>
+                                    <a href="app_inbox.html">
+                                        <i class="icon-envelope-open"></i>通知
+                                        <span class="badge badge-danger"> 3 </span>
+                                    </a>
+                                </li>*@
+                                <li class="divider"> </li>
+
+                                <li>
+                                    <a href="/home/logout" target="_self">
+                                        <i class="icon-key"></i>退出
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- END USER LOGIN DROPDOWN -->
+
+                    </ul>
+                </div>
+                <!-- END TOP NAVIGATION MENU -->
+            </div>
+            <!-- END PAGE TOP -->
+        </div>
+        <!-- END HEADER INNER -->
+    </div>
+
+    <div class="clearfix"> </div>
+
+    <div class="page-container">
+        <div class="page-sidebar-wrapper">
+
+            <div class="page-sidebar navbar-collapse collapse">
+
+                <ul class="page-sidebar-menu   " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+
+                    @*<li class="heading">
+                            <h3 class="uppercase">用户管理</h3>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-diamond"></i>
+                                <span class="title">用户列表</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="ui_colors.html" class="nav-link ">
+                                        <span class="title">注册用户</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="ui_general.html" class="nav-link ">
+                                        <span class="title">邀请管理</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>*@
+                    <li class="nav-item  ">
+                        <a href="/user/index" class="nav-link">
+                            <i class="icon-user"></i>
+                            <span class="title">用户列表</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="/team/index" class="nav-link">
+                            <i class="icon-user"></i>
+                            <span class="title">战队管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="/game/index" class="nav-link">
+                            <i class="icon-user"></i>
+                            <span class="title">游戏管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="/art/index" class="nav-link">
+                            <i class="icon-user"></i>
+                            <span class="title">文章管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="/channel/index" class="nav-link">
+                            <i class="icon-user"></i>
+                            <span class="title">渠道管理</span>
+                        </a>
+                    </li>
+                    @*<li class="nav-item  ">
+                            <a href="/bet/index" class="nav-link">
+                                <i class="icon-user"></i>
+                                <span class="title">回合管理</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="/quiz/index" class="nav-link">
+                                <i class="icon-user"></i>
+                                <span class="title">问题管理</span>
+                            </a>
+                        </li>*@
+
+                </ul>
+            </div>
+        </div>
+        <div class="page-content-wrapper">
+            <div class="page-content" id="page-content">
+
+            </div>
+        </div>
+
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-inner">
+        </div>
+        <div class="scroll-to-top">
+            <i class="icon-arrow-up"></i>
+        </div>
+    </div>
+    <script>var urlArgs = "@ViewBag.version";</script>
+    <script src="~/front/script"></script>
+
+    @RenderBody()
+</body>
+
+</html>

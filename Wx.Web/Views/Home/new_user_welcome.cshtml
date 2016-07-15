@@ -1,0 +1,116 @@
+﻿<div id="new_user_gift">
+    <template v-if="showNewUserGift">
+        <style>
+            .con-layer {
+                margin-bottom: 10px;
+            }
+
+                .con-layer table {
+                    margin: 0px auto;
+                    border: none;
+                }
+
+                    .con-layer table td {
+                        height: 40px;
+                        line-height: 40px;
+                        border-left: none;
+                        border-bottom: none;
+                    }
+
+            .btn-dota {
+                width: 85%;
+                display: block;
+                margin: 0 auto;
+                margin-top: 5PX;
+                height: 28px;
+                line-height: 28px;
+                border-radius: 45px;
+                background: #19a2f4;
+                color: #aee1ff;
+                font-size: 14px;
+                text-align: center;
+                margin-bottom: 5px;
+            }
+        </style>
+        <div class="box" style="display:block;z-index:1;"></div>
+        <div class="layer" style="display: block;" v-if="!messageform.message">
+            <div class="layer-img">
+                <img src="@(ViewBag.imgPath)/first.png" />
+            </div>
+            <div class="con-layer">
+                <h3 style="margin-bottom:20px;">新手10元真诚礼包</h3>
+                <table width="90%" border="0" cellspacing="0" cellpadding="0">
+                    <tr class="title">
+                        <td width="130" align="left">新手88金币体验金</td>
+                        <td><a class="btn-dota" @@click="GetNewUserGolds">领  取</a></td>
+                    </tr>
+                    <tr>
+                        <td width="130" align="left">每日签到领金币</td>
+                        <td><a class="btn-dota" @@click="GetDailyLoginGolds">签  到</a></td>
+                    </tr>
+                    <tr>
+                        <td width="130" align="left">首次充值送豪礼</td>
+                        <td><a class="btn-dota" @@click="showPage('coin/pay')">充  值</a></td>
+                    </tr>
+                    <tr>
+                        <td width="130" align="left">邀请战友，共享礼包</td>
+                        <td><a class="btn-dota" @@click="showPage('invite/index')">去看看</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="layer" style="display:block" v-if="messageform.message">
+            <div class="con-layer">
+                <p style="font-size:18px; padding:20px 0; margin:0">{{messageform.message}}</p>
+            </div>
+            <div class="bnt-con"><a class="hint-in3" @@click="messageOKClick">确  定</a></div>
+        </div>
+    </template>
+</div>
+<script>
+    var baseHref = '@(ViewBag.baseHref)';
+</script>
+<script>
+    require(["Vue", "page"], function (Vue, page) {
+        new Vue({
+            el: '#new_user_gift',
+            data: {
+                showNewUserGift: true,
+                messageform: {
+                    message: null
+                }
+            },
+            methods: {
+                closeNewUserGift: function () {
+                    this.showNewUserGift = false;
+                },
+                GetNewUserGolds: function () {
+                    Vue.http.get('Bonus/GetNewUserGolds').then(function (response) {
+                        this.message(response.data.message, response.data.data.close);
+                    }.bind(this));
+                },
+                GetDailyLoginGolds: function () {
+                    Vue.http.get('Bonus/GetDailyLoginGolds').then(function (response) {
+                        this.message(response.data.message, response.data.data.close);
+                    }.bind(this));
+                },
+                message: function (message, close) {
+                    this.messageform.message = message;
+                    this.messageform.close = close;
+                },
+                messageOKClick: function () {
+                    this.messageform.message = null;
+                    if (this.messageform.close) {
+                        this.closeNewUserGift();
+                    }
+                },
+                showPage: function (url) {
+                    this.showNewUserGift = false;
+                    var url = baseHref + url;
+                    location.href = url;
+                }
+            }
+        });
+    });
+</script>

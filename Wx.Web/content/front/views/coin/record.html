@@ -1,0 +1,19 @@
+﻿<div>
+    <header class="header" v-if="apiData">
+        <span class="fl">今日竞猜：{{apiData.today.quizUserCount | money 0}}人，{{apiData.today.quizGolds | money 0}}金币</span>
+        <span class="header-r fr">余额：{{apiData.user.user_balance | money 0}}</span>
+        <a class="rules" href="bet/about"></a>
+    </header>
+    <!--主体-->
+    <div class="wrap margin-top58 about rules-ab" v-if="apiData">
+        <dl v-for="record in apiData.coinRecoreds">
+            <dd v-bind:class="{daytime:(record.detail||'').indexOf('每日登录')!=-1}">{{record.detail}}</dd>
+            <dt>金币{{record.changeAmount>0?'+':''}}{{record.changeAmount | money 2}}</dt>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-9 rules-list-l">{{record.recordTime | datetime}}</div>
+                <div class="col-md-3 rules-list-r">金币余额{{record.amount | money 2}}</div>
+            </div>
+        </dl>
+    </div>
+</div>

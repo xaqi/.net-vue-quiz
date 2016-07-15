@@ -1,0 +1,30 @@
+﻿<div>
+    <template v-if="apiData">
+        <header class="header">
+            <span class="fl">今日竞猜：{{apiData.today.quizUserCount}}人，{{apiData.today.quizGolds | money 0}}金币</span>
+            <span class="header-r fr">余额：{{apiData.user.user_balance | money 0}}</span>
+            <a class="rules" href="bet/about"></a>
+        </header>
+        <div class="wrap">
+            <div class="row Comrades" v-for="friend in apiData.friends">
+                <div class="col-md-3 item-user">
+                    <a href="">
+                        <span>
+                            <img :src="friend.header">
+                        </span>
+                    </a>
+                </div>
+                <div class="col-md-9 item-con">
+                    <dl>
+                        <dt>{{friend.name}}</dt>
+                        <div class="clearfix"></div>
+                        <dd><label>招募时间：</label>{{friend.time}}</dd>
+                        <dd><label>已奖励：</label>0金币</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <p v-if="apiData.friends.length==0" style="margin:100px auto; text-align:center; font-size:16px;">你还没有战友，赶快邀请你的小伙伴吧！</p>
+        </div>
+    </template>
+</div>

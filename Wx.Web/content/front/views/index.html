@@ -1,0 +1,18 @@
+﻿<div>
+    <!--for modules-->
+    <div id="container">
+    </div>
+    <footer>
+        <ul class="nav nav-pills">
+            <li v-for="item in navs" v-bind:class="$root.tabIndex==item.tabIndex?'active':''">
+                <a v-bind:class="item.cls" @click="navItemClick(item)" v-bind:href="item.view">{{item.name}}</a>
+            </li>
+        </ul>
+    </footer>
+    <!--for util-->
+    <div id="util_container"></div>
+
+
+    <div class="box" v-if="showLoadingMask" style="display:block;"></div>
+
+</div>

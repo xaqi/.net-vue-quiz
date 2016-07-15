@@ -1,0 +1,211 @@
+﻿<div>
+    <div v-if="apiData">
+        <style v-if="gameType=='dota'">
+            .img {
+                display: block;
+                width: 80px;
+                height: 80px;
+                background-size: 8935px 80px;
+            }
+
+            #jswbox li {
+                width: 80px;
+                height: 80px;
+                overflow: visible;
+                position: relative;
+            }
+
+            .img-big {
+                margin-top: -90px;
+            }
+
+            .li-img-big {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #jswbox {
+                height: 140px;
+            }
+
+            .hero-roll {
+                width: 5000px;
+                position: relative;
+                background-repeat: repeat-x;
+                background-size: 4468px 47px;
+                animation: mymove 56s infinite;
+                -webkit-animation: mymove 56s infinite; /*Safari and Chrome*/
+                -webkit-transition-timing-function: linear; /* Safari 和 Chrome */
+                -webkit-animation-timing-function: linear; /* Safari 和 Chrome */
+                -o-transition-timing-function: linear; /* Opera */
+                transition-timing-function: linear;
+                animation-timing-function: linear;
+                margin-top: 20px;
+            }
+
+            @keyframes mymove {
+                from {
+                    left: 0;
+                }
+
+                to {
+                    left: -4468px;
+                }
+            }
+
+            @-webkit-keyframes mymove /*Safari and Chrome*/
+            {
+                from {
+                    left: 0;
+                }
+
+                to {
+                    left: -4468px;
+                }
+            }
+        </style>
+        <style v-if="gameType=='lol'">
+            .img {
+                display: block;
+                width: 61px;
+                height: 60px;
+                background-size: 7991px 60px;
+            }
+
+            #jswbox li {
+                width: 61px;
+                height: 60px;
+                overflow: visible;
+                position: relative;
+            }
+
+            .img-big {
+                margin-top: -75px;
+            }
+
+            .li-img-big {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #jswbox {
+                height: 140px;
+            }
+
+            .hero-roll {
+                width: 5000px;
+                position: relative;
+                background-repeat: repeat-x;
+                background-size: 3996px 30px;
+                animation: mymove 56s infinite;
+                -webkit-animation: mymove 56s infinite; /*Safari and Chrome*/
+                -webkit-transition-timing-function: linear; /* Safari 和 Chrome */
+                -webkit-animation-timing-function: linear; /* Safari 和 Chrome */
+                -o-transition-timing-function: linear; /* Opera */
+                transition-timing-function: linear;
+                animation-timing-function: linear;
+                margin-top: 20px;
+            }
+
+            @keyframes mymove {
+                from {
+                    left: 0;
+                }
+
+                to {
+                    left: -4468px;
+                }
+            }
+
+            @-webkit-keyframes mymove /*Safari and Chrome*/
+            {
+                from {
+                    left: 0;
+                }
+
+                to {
+                    left: -4468px;
+                }
+            }
+        </style>
+
+        <!--顶部导航-->
+        <header class="header" v-if="apiData">
+            <span class="fl">今日竞猜：{{apiData.today.quizUserCount | money 0}}人，{{apiData.today.quizGolds | money 0}}金币</span>
+            <span class="header-r fr">余额：{{apiData.user.user_balance | money 0}}</span>
+            <a class="rules" href="roulette/about"></a>
+        </header>
+        <!--主体-->
+        <div class="wrap rules-ab Hero">
+            <div id="jswbox">
+                <h3 v-if="!locked">距离{{name}}期幸运英雄出现还有{{fomartTime}}</h3>
+                <h3 v-if="locked">第{{name}}期正在开奖中，已停止投注</h3>
+                <ul style="width:100%;">
+
+                    <li>
+                        <div class="img hero-roll" v-bind:style="{'background-image':back_ground_image}"></div>
+                    </li>
+                    <li class="li-img-big">
+                        <div class="img img-big" v-bind:style="{'background-position-x':'-'+currentRollHeroIndex*roll_img_width+'px','background-image':back_ground_image}">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="hero-con" v-if="apiData">
+                <h3>本期幸运英雄是？</h3>
+                <template v-for="property_type in apiData.property_types">
+                    <h4>{{property_type.name}}</h4>
+                    <div class="row">
+                        <a v-for="property in property_type.propertys"
+                           @click="toggleSelectionClick(property,property_type,apiData.property_types)"
+                           v-bind:class="{'col-md-4':property_type.propertys.length==3,'col-md-6':property_type.propertys.length==2,'hero-active':property.active}">
+                            {{property.name}}（{{property.odds | money 2}}）
+                        </a>
+                    </div>
+                </template>
+                <a class="btn-dota" @click="btnSubmitClick" v-bind:disabled="selections.length==0">
+                    投注
+                    {{(selections.length>1?"组合":"")+(selections.length>0?("赔率"+odd):"")}}
+                </a>
+            </div>
+            <div class="write-down" v-if="history">
+                <h3>今日开奖记录</h3>
+                <p>
+                    <label>时时彩期数</label>
+                    <label>开奖号码</label>
+                    幸运英雄
+                </p>
+                <p v-for="item in history"><label>第{{item.period}}期</label><label>{{item.no}}</label>{{item.hero}}</p>
+            </div>
+
+
+            <div class="box" v-if="showMask" style="display:block;"></div>
+            <div class="layer" style="display:block;" v-if="submitform.show">
+                <div class="con-layer">
+                    <h4>{{submitform.title}}</h4>
+                    <span>投注：{{submitform.selectNames}}（赔率： {{submitform.odds}} ）</span>
+                    <div class="form-group">
+                        <div class="input-box">
+                            <label>竞猜金额&nbsp;&nbsp;|&nbsp;&nbsp;</label>
+                            <input v-model="submitform.golds" v-focus-auto number type="number" class="form-control" name="goldname" placeholder="最低投注1金币" />
+                        </div>
+                    </div>
+                    <div class="money"><label>可能奖金 ：</label>{{expect_income|money 1}}金币</div>
+                    <div class="money"><label>当前余额 ：</label>{{apiData.user.user_balance|money 0}}金币</div>
+                </div>
+                <div class="bnt-con">
+                    <a class="hint-in1 hint" @click="submitClick">确  定</a>
+                    <a class="hint-in2 cancel" @click="cancelClick">取消</a>
+                </div>
+            </div>
+            <div class="layer" style="display:block" v-if="messageform.message">
+                <div class="con-layer">
+                    <p style=" font-size:18px; padding:20px 0; margin:0">{{messageform.message}}</p>
+                </div>
+                <div class="bnt-con"><a class="hint-in3" @click="messageOKClick">确  定</a></div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

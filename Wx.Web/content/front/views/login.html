@@ -1,0 +1,27 @@
+﻿<div style="background:url(/content/front/design/images/bg01.jpg)">
+    <!--顶部导航-->
+    <header class="header release-top">
+        <a @click="btnBackClick" class="btn-l">
+            <img src="/content/front/design/images/back.png" />
+        </a>
+    </header>
+
+    <div class="wrap margin-top58 login">
+        <h3>选择游戏</h3>
+        <div class="row choice">
+            <div class="col-md-6 choice-l">
+                <a :class="{active:selectedGame=='Dota2'}" @click="onChClick('Dota2','/dota')">
+                    <span><img src="/content/front/design/images/logo_dota.png"></span>
+                    Dota2
+                </a>
+            </div>
+            <div class="col-md-6 choice-l">
+                <a :class="{active:selectedGame=='英雄联盟'}" @click="onChClick('英雄联盟','/lol')">
+                    <span><img src="/content/front/design/images/hero_logo.png"></span>
+                    英雄联盟
+                </a>
+            </div>
+        </div>
+        <a class="dota-ch" @click="btnEnterClick">进入{{selectedGame}}</a>
+    </div>
+</div>

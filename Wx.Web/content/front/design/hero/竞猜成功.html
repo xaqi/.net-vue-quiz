@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>全民菠菜</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
+<meta name="description" content="">
+<meta name="author" content=""> 
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<link href="bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="style/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+<!--弹出层-->
+<link rel="stylesheet" type="text/css" href="style/alert.css" />
+<!--验证信息 js+css -->
+<link rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrapValidator.css"/>
+<script type="text/javascript" src="bootstrap-3.3.5-dist/js/bootstrapValidator.js"></script>
+</head>
+
+<body>
+<!--顶部导航-->
+<header class="header">
+    <span class="fl">今日竞猜：58960人，500万金币</span>
+    <span class="header-r fr">余额：300金币</span>
+    <a class="rules" href="竞猜规则.html"></a>
+</header>
+<!--主体-->
+<div class="wrap">
+   <!--可竞猜-->
+   <div class="row">
+       <div class="col-md-3 item-user">
+           <a href=""><span><img src="images/user-img.jpg" ></span>宝哥</a>
+           <i class="item-icon"><img src="images/icon01.png"></i>
+           <span class="live"></span>
+      </div>
+       <div class="col-md-9 item-con">
+          <dl>
+             <dt><a class="btn-win" href="javascript:void(0);" >能<label>1.6</label></a></dt>
+             <dd>
+                 <h4>15:45/超神</h4>
+                 <div class="progress"> 
+                    <div class="progress-bar" style="width:40%;" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"> <span class="sr-only" style="left:40%;">40%</span> </div>
+                 </div>
+                 <p>580人-84135金币</p>
+             </dd>
+             <dt><a href="">不能<label>1.6</label></a></dt>
+          </dl> 
+          <span class="home-alt o-alert">竞猜中</span>
+       </div>
+   </div>
+   <!--不可竞猜-->
+   <div class="row del-item">
+       <div class="col-md-3 item-user">
+           <a href=""><span><img src="images/user-img.jpg" ></span>宝哥</a>
+           <i class="item-icon"><img src="images/icon02.png"></i>
+      </div>
+       <div class="col-md-9 item-con">
+          <dl>
+             <dt><a href="">能<label>1.6</label></a></dt>
+             <dd>
+                 <h4>15:45/超神</h4>
+                 <div class="progress"> 
+                    <div class="progress-bar" style="width:40%;" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"> <span class="sr-only" style="left:40%;">40%</span> </div>
+                 </div>
+                 <p>580人-84135金币</p>
+             </dd>
+             <dt><a href="">不能<label>1.6</label></a></dt>
+          </dl> 
+          <span class="home-alt d-alert">已封盘</span>
+       </div>
+   </div>
+    <!--不可竞猜-->
+   <div class="row del-item">
+       <div class="col-md-3 item-user">
+           <a href=""><span><img src="images/user-img.jpg" ></span>宝哥</a>
+           <i class="item-icon"><img src="images/icon03.png"></i>
+       </div>
+       <div class="col-md-9 item-con">
+          <dl>
+             <dt><a href="">能<label>1.6</label></a></dt>
+             <dd>
+                 <h4>15:45/超神</h4>
+                 <div class="progress"> 
+                    <div class="progress-bar" style="width:80%;" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"> <span class="sr-only" style="left:80%;">80%</span> </div>
+                 </div>
+                 <p>580人-84135金币</p>
+             </dd>
+             <dt><a href="">不能<label>1.6</label></a></dt>
+          </dl> 
+          <span class="home-alt d-alert">已结束</span>
+       </div>
+   </div>
+   <!--可竞猜-->
+   <div class="row">
+      <div class="col-lg-2 item"><a href=""><span><img src="images/user01.png" ></span>胜(1.6)</a></div>
+      <div class="col-lg-8 game-con">
+          <span class="home-game o-game">竞猜中</span>
+          <h4>3.18-18:00/好汉杯</h4>
+          <p>B03</p>
+          <p>胜负</p>
+          <div class="progress"> 
+                    <div class="progress-bar" style="width:50%;" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"> <span class="sr-only" style="left:50%;">50%</span> </div>
+           </div>
+          <p>580人-84135金币</p>
+      </div>
+      <div class="col-lg-2 item item1"><a href=""><span><img src="images/user02.png" ></span>胜(2.0)</a></div>
+   </div>
+   <!--不可竞猜-->
+   <div class="row game">
+      <div class="col-lg-2 item"><a href=""><span><img src="images/user01.png" ></span>胜(1.6)</a></div>
+      <div class="col-lg-8 game-con">
+          <span class="home-game d-game">已结束</span>
+          <h4>3.18-18:00/好汉杯</h4>
+          <p>B03</p>
+          <p>胜负</p>
+          <div class="progress"> 
+                    <div class="progress-bar" style="width:50%;" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"> <span class="sr-only" style="left:50%;">50%</span> </div>
+           </div>
+          <p>580人-84135金币</p>
+      </div>
+      <div class="col-lg-2 item item1"><a href=""><span><img src="images/user02.png" ></span>胜(2.0)</a></div>
+   </div>
+    
+</div>
+<footer>
+    <ul class="nav nav-pills">
+      <li class="active"><a class="menu01" href="#">英雄猜</a></li>
+      <li><a class="menu02" href="#">竞猜</a></li>
+      <li><a class="menu03" href="#">个人</a></li>
+    </ul>
+</footer>
+
+<div class="box" style=" display:block;"></div>
+<div class="layer" style=" display:block;">
+	<div class="con-layer">
+        <P style=" font-size:18px; padding:20px 0; margin:0">竞猜成功</P>
+	</div>
+    <div class="bnt-con"><a class="hint-in3" href="javascript:void(0);">确  定</a></div>
+</div>
+<script type="text/javascript">
+
+$(document).ready(function($){
+
+	$(".hint-in3").click(function(event) {
+		$(".layer").css({"display":"none"});
+		$(".box").css({"display":"none"});
+	});
+});
+</script>
+
+</body>
+</html>

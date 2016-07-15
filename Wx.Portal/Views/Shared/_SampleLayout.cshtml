@@ -1,0 +1,31 @@
+﻿@{
+
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>电竞管理</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+
+    <base href="~/front/" />
+
+    <link href="~/front/css" rel="stylesheet" type="text/css" />
+
+    <link rel="shortcut icon" href="favicon.png" />
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div id="page-content"></div>
+    </div>
+    <script>var urlArgs = "@ViewBag.version";</script>
+    <script src="~/front/script"></script>
+    @RenderBody()
+</body>
+
+</html>

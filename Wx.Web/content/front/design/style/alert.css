@@ -1,0 +1,34 @@
+*{margin:0;padding:0;}
+
+.box{width:100%;height:100%;background:rgba(0,0,0,0.6);position:fixed;z-index:100; display:none;top:0; left:0;}
+.layer{width:90%;height:auto;margin:0 auto;background:#1d2b32;position:fixed;top:50%;left:5%;margin-top:-200px;z-index:111;display:none; border-radius:10px; }
+.layer-img{ width:100%;}
+.layer-img img{ height:auto; width:100%;border-radius:10px 10px 0 0;}
+.con-layer{ text-align:center; padding:20px;}
+.con-layer h3{ margin:0; font-size:18px; margin-top:10px; height:30px; line-height:30px; color:#e6e6e6}
+.con-layer p{color:#e6e6e6}
+.con-layer table{ margin:0px auto; border:2px solid #39444f;}
+.con-layer table td{height:35px; line-height:35px; border-bottom:2px solid #39444f; border-left:2px solid #39444f}
+.con-layer table .title td.day-color{ color:#e6e6e6;}
+.day-color{ color:#e6e6e6;}
+.btn-dota{ width:85%; display:block; margin:0 auto; margin-top:10PX; height:40px; line-height:40px; border-radius:45px; background:#19a2f4; color:#aee1ff; font-size:18px; text-align:center; margin-bottom:30px;}
+.con-layer h4{ margin:0px;font-size:18px;height:40px; line-height:40px; text-align:left; margin-left:8px;}
+.con-layer span{ text-align:left; display:block; margin-left:8px;}
+.input-box{ background:#253239; height:40px; line-height:40px; text-align:left; border-radius:5px; margin-top:12px; margin-bottom:10px;}
+.input-box label{float:left;font-weight:100; text-indent:10px; color:#e6e6e6;}
+.input-box input{ width:60%; background:none; border:none; float:left;color:#e6e6e6;}
+.input-box input:focus{ border:none;box-shadow:none; color:#e6e6e6;}
+.con-layer .form-group{ margin:0;}
+.form-control{ height:40px;}
+.help-block{ color:#ef5a5a;}
+.has-feedback label~.form-control-feedback { top:15px; color:#218bcb;}
+.has-success .form-control:focus{box-shadow:none; border:none;}
+.money{ line-height:30px; text-align:left; margin-left:8px; color:#e6e6e6;}
+.money label{ font-weight:100;}
+.bnt-con a{ width:50%; display:block; float:left; height:45px; line-height:45px; text-align:center; font-size:18px;}
+.hint{ background:#218bcb;border-radius:0px 0 0 10px; color:#e6e6e6}
+.cancel{background:#28373f;border-radius:0px 0 10px 0; color:#e6e6e6}
+.bnt-con a.hint-in3{background:#218bcb;border-radius:0px 0 10px 10px;width:100%; color:#e6e6e6}
+.img-successful{ max-width:35%;}
+.successful_l p{ color:#747f84; margin-bottom:5px;}
+.successful_l h3{ color:#747f84; font-size:14px;}

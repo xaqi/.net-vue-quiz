@@ -1,0 +1,93 @@
+﻿<div>
+    <div class="row">
+    </div>
+    <div class="row">
+        <template v-register="'table1'">
+            <div>
+                <table class="table table-striped table-bordered table-condensed table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th> 名称 </th>
+                            <th> 游戏名称</th>
+                            <th> 开始时间</th>
+                            <th> 结束时间</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="row in rows">
+                            <td>
+                                {{pagination.start + $index + 1}}
+                                <img v-if="false" :src="row.header" style="width:50px;height:50px;" />
+                            </td>
+                            <td> {{row.name}} </td>
+                            <td>{{row.gameName}}</td>
+                            <td>{{row.startTime}}</td>
+                            <td>{{row.endTime}}</td>
+                            <td>
+                                <!--<a @click="dispatch('row_edit',row)">编辑</a>
+
+                                <a @click="dispatch('row_delete',row)">删除</a>-->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </template>
+        <table-layout url="/api/bet/getlist" table_template="table1" table_name="用户列表" v-if="registered.table1"></table-layout>
+    </div>
+
+    <div v-if="modal_data">
+        <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: block; padding-right: 17px;">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button @click="close_modal" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" placeholder="Name" v-model="modal_data.name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Remember me
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-default">Sign in</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button @click="close_modal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button @click="save" type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop fade in"></div>
+    </div>
+
+</div>
+

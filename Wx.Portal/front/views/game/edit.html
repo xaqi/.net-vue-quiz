@@ -1,0 +1,213 @@
+﻿<div>
+    <div v-if="!apiData">
+        <h1>loading...</h1>
+    </div>
+    <div v-if="apiData">
+        <h1>{{apiData.name}}</h1>
+
+
+        <div class="clearfix btn-toolbar">
+            <a @click="btnAddBetClick" class="btn btn-primary">添加回合</a>
+        </div>
+        <div class="portlet box blue" v-for="bet in apiData.bets">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i>
+                    {{bet.name}}  {{bet.startTime}} - {{bet.endTime}}  排序 {{bet.displayOrder}}
+                </div>
+                <div class="tools">
+                    <a data-toggle="modal" class="remove" @click.stop="btnRemoveBetClick(bet)"> </a>
+                </div>
+            </div>
+            <div class="portlet-body" style="display: block;">
+                <div class="row">
+                    <div class="clearfix btn-toolbar">
+                        <a @click="btnEditBetClick(bet)" class="btn btn-primary">编辑回合</a>
+                        <a @click="btnRemoveBetClick(bet)" class="btn btn-primary">删除回合</a>
+                        <a @click="btnAddQuizClick(bet)" class="btn btn-primary">添加问题</a>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="tab-content">
+
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th> # </th>
+                                        <th>问题</th>
+                                        <th>状态</th>
+                                        <th> 选项 </th>
+                                        <th> 排序 </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="quiz in bet.quizs">
+                                        <td>
+                                            {{$index+1}}
+                                        </td>
+                                        <td>
+                                            {{quiz.subject}}
+                                        </td>
+                                        <td>
+                                            <span class="label label-sm label-success" v-if="quiz.quizstatus==0"> 可竞猜 </span>
+                                            <span class="label label-sm label-primary" v-if="quiz.quizstatus==1"> 比赛中 </span>
+                                            <span class="label label-sm label-danger" v-if="quiz.quizstatus==2"> 已结算 </span>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group" v-for="option in quiz.options">
+                                                <button class="btn btn-default btn-sm dropdown-toggle" v-bind:class="{btn:true,'btn-default':true,'btn-sm':true,'dropdown-toggle':true,'red-haze':option.optionstatus==1}" type="button" data-toggle="dropdown" aria-expanded="false">
+                                                    {{option.subject}}
+                                                    <i class="fa fa-angle-down"></i>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li>
+                                                        <a @click="btnEditOptionClick(option)"> 编辑 </a>
+                                                    </li>
+                                                    <li>
+                                                        <a @click="btnDeleteOptionClick(option)"> 删除 </a>
+                                                    </li>
+                                                    <li>
+                                                        <a @click="btnResolveOptionClick(option)"> 标记为正确答案 </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+
+                                        </td>
+                                        <td>
+                                            {{quiz.displayOrder}}
+                                        </td>
+                                        <td>
+                                            <a @click="btnAddOptionClick(quiz)">添加选项</a>
+                                            <a @click="quizEditClick(quiz,bet)">编辑</a>
+                                            <a @click="quizDeleteClick(quiz,bet)">删除</a>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div v-if="modal_bet">
+        <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: block; padding-right: 17px;">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button @click="close_modal" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            {{modal_bet.betId>0?"编辑":"添加"}}回合
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">名称</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" placeholder="名称" v-model="modal_bet.name">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">开始时间</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" placeholder="开始时间" v-model="modal_bet.startTime">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">结束时间</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" placeholder="结束时间" v-model="modal_bet.endTime">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">排序</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" placeholder="排序" v-model="modal_bet.displayOrder">
+                                </div>
+                            </div>
+
+
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button @click="close_modal" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button @click="saveBet" type="button" class="btn btn-primary">保存</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop fade in"></div>
+    </div>
+
+
+
+
+
+
+    <div v-if="modal_quiz">
+        <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: block; padding-right: 17px;">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button @click="close_modal" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            {{modal_quiz.quizId>0?"编辑":"添加"}}问题
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">名称</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" placeholder="名称" v-model="modal_quiz.subject">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">状态</label>
+                                <div class="col-sm-10">
+                                    <select v-model="modal_quiz.quizstatus">
+                                        <option value="0">可竞猜</option>
+                                        <option value="1">比赛中</option>
+                                        <option value="2">已结算</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">排序</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" placeholder="排序" v-model="modal_quiz.displayOrder">
+                                </div>
+                            </div>
+
+
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button @click="close_modal" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button @click="saveQuiz" type="button" class="btn btn-primary">保存</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop fade in"></div>
+    </div>
+
+
+</div>

@@ -1,0 +1,54 @@
+﻿<div>
+    <!--顶部导航-->
+    <header class="header" v-if="apiData">
+        <span class="fl">今日竞猜：{{apiData.today.quizUserCount | money 0}}人，{{apiData.today.quizGolds | money 0}}金币</span>
+        <span class="header-r fr">余额：{{apiData.user.user_balance | money 0}}</span>
+        <a class="rules" href="bet/about"></a>
+    </header>
+    <!--主体-->
+    <div class="wrap" v-if="apiData">
+        <div class="con-layer">
+            <h3 style="margin-bottom:20px;">金币余额：{{apiData.user.user_balance | money 2}}金币</h3>
+            <table width="90%" border="0" cellspacing="0" cellpadding="0">
+                <tr class="title">
+                    <td width="33.3%" v-for="item in apiData.payConfig.row1">
+                        <a @click="payItemClick(item.rmb,item.golds)" v-bind:class="{active:item.rmb==rmb}">
+                            {{item.rmb}}元
+                        </a>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td v-for="item in apiData.payConfig.row2">
+                        <a @click="payItemClick(item.rmb,item.golds)" v-bind:class="{active:item.rmb==rmb}">
+                            {{item.rmb}}元
+                        </a>
+                    </td>
+                    <td><input class="text-m" type="text" v-model="other_golds" placeholder="其他金额" @keyup="other_golds_change" @change="other_golds_change" /></td>
+                </tr>
+            </table>
+            <p class="margintop">{{golds}}金币（送{{giveGolds}}金币）</p>
+        </div>
+        <a class="btn-dota" @click=" btnSubmitClick">立即充值</a>
+    </div>
+    <div class="box" v-if="showMask" style="display:block;"></div>
+    <div class="layer" style="display:block" v-if="messageform.message">
+        <div class="con-layer">
+            <p style=" font-size:18px; padding:20px 0; margin:0">{{messageform.message}}</p>
+        </div>
+        <div class="bnt-con"><a class="hint-in3" @click="messageOKClick">确  定</a></div>
+    </div>
+
+    <template v-if="showTempPay">
+        <div class="box" style=" display:block;"></div>
+        <div class="layer" style=" display:block;">
+            <div class="con-layer successful_l">
+                <P style="font-size:18px; padding:20px 0; color:#e6e6e6; margin:0">微信支付正在召唤中，尚需时日</P>
+                <p style="text-align:left;">饥渴的玩家可联系我们的客服妹妹<br />微信号-qmbocai（全民菠菜首字母）</p>
+                <P style="text-align:left;">首次充值10元以上赠送200金币礼包</P>
+            </div>
+            <div class="bnt-con"><a class="hint-in3" @click="closeTempPay">确  定</a></div>
+        </div>
+    </template>
+
+</div>

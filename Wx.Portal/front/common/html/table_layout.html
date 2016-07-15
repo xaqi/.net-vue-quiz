@@ -1,0 +1,32 @@
+﻿<div>
+    <div class="portlet box green">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-comments"></i>
+                {{table_name}}
+            </div>
+            <div class="tools">
+                <a href="javascript:;" class="reload" @click="refresh" data-original-title="" title=""> </a>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="table-scrollable" style="position:relative;">
+
+                <div :is="table_template" :rows="rows" :pagination="pagination"></div>
+                <pagination :pagination="pagination" nav-class="anyclass" size="pagination-sm" :callback="page_callback" :offset="3"></pagination>
+
+
+                <template v-if="loading">
+                    <div class="blockUI" style="display:none"></div>
+                    <div class="blockUI blockOverlay" style="z-index: 1000; border: none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; opacity: 0.1; cursor: wait; position: absolute;"></div>
+                    <div class="blockUI blockMsg blockElement" style="z-index: 1011; position: absolute; padding: 0px; margin: 0px; width: 30%; top: 200.5px; left: 271px; text-align: center; color: rgb(0, 0, 0); border: 0px; cursor: wait;"><div class="loading-message "><div class="block-spinner-bar"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div></div></div>
+
+                    <div class="modal-backdrop fade in"></div>
+                </template>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,46 @@
+﻿<div>
+    <!--顶部导航-->
+
+    <header class="header" v-if="apiData">
+        <span class="fl">今日竞猜：{{apiData.today.quizUserCount | money 0}}人，{{apiData.today.quizGolds | money 0}}金币</span>
+        <span class="header-r fr">余额：{{apiData.user.user_balance | money 0}}</span>
+        <a class="rules" href="bet/about"></a>
+    </header>
+    <!--主体-->
+    <div class="wrap" v-if="apiData">
+        <div class="con-layer" style=" padding-top:50px; padding-left:0; padding-right:0;">
+            <form id="form" method="post" class="form-horizontal" action="">
+                <div class="form-group">
+                    <div class="col-sm-5 inputblwrap ico-user">
+                        <input v-model="submit.alipay" type="text" class="form-control" name="username" placeholder="请输入支付宝账号" />
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-5 inputblwrap ico-phone">
+                        <input v-model="submit.phone" type="text" class="form-control" name="phone" placeholder="联系电话" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-5 inputblwrap ico-textarea">
+                        <textarea v-model="submit.detail" placeholder="备注信息" data-validate="required:必填" class="form-control" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10 inputblwrap pd-left col-sm-offset-2">
+                        <a class="submit-btn" @click="btnSubmitClick">确认兑换</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="box" v-if="showMask" style="display:block;"></div>
+    <div class="layer" style="display:block" v-if="messageform.message">
+        <div class="con-layer">
+            <p style=" font-size:18px; padding:20px 0; margin:0">{{messageform.message}}</p>
+        </div>
+        <div class="bnt-con"><a class="hint-in3" @click="messageOKClick">确  定</a></div>
+    </div>
+</div>

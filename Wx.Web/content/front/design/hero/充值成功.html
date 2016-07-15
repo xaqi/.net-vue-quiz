@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>全民菠菜</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
+<meta name="description" content="">
+<meta name="author" content=""> 
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<link href="bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="style/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+<!--弹出层-->
+<link rel="stylesheet" type="text/css" href="style/alert.css" />
+<!--验证信息 js+css -->
+<link rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrapValidator.css"/>
+<script type="text/javascript" src="bootstrap-3.3.5-dist/js/bootstrapValidator.js"></script>
+</head>
+
+<body>
+<!--顶部导航-->
+<header class="header">
+    <span class="fl">今日竞猜：58960人，500万金币</span>
+    <span class="header-r fr">余额：300金币</span>
+    <a class="rules" href="竞猜规则.html"></a>
+</header>
+<!--主体-->
+<div class="wrap">
+    <div class="con-layer">
+        <h3 style="margin-bottom:20px;">金币余额：300金币</h3>
+        <table width="90%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="title">
+            <td><a href="javascript:void(0);">10元</td>
+            <td><a href="javascript:void(0);">20元</td>
+            <td><a href="javascript:void(0);">50元</td>
+          </tr>
+          <tr>
+            <td class="day-color"><a href="javascript:void(0);">100元</a></td>
+            <td><a href="javascript:void(0);">200元</a></td>
+            <td><a href="javascript:void(0);">其他金额</a></td>
+          </tr>
+        </table>
+        <p class="margintop">1030金币（送30金币）</p>
+    </div>
+    <a class="btn-dota" href="">立即充值</a>
+</div>
+<footer>
+    <ul class="nav nav-pills">
+      <li class="active"><a class="menu01" href="#">英雄猜</a></li>
+      <li><a class="menu02" href="#">竞猜</a></li>
+      <li><a class="menu03" href="#">个人</a></li>
+    </ul>
+</footer>
+
+<div class="box" style=" display:block;"></div>
+<div class="layer" style=" display:block;">
+	<div class="con-layer successful_l">
+        <img class="img-successful" src="images/successful.png">
+        <P style="font-size:18px; padding:20px 0; color:#e6e6e6; margin:0">充值成功</P>
+        <p>获得30金币（仅当日消费）</p>
+        <P>您的红包正在派送中</P>
+        <h3>余额530金币</h3>
+	</div>
+    <div class="bnt-con"><a class="hint-in3" href="javascript:void(0);">确  定</a></div>
+</div>
+<script type="text/javascript">
+
+$(document).ready(function($){
+
+	$(".hint-in3").click(function(event) {
+		$(".layer").css({"display":"none"});
+		$(".box").css({"display":"none"});
+	});
+});
+</script>
+</body>
+</html>

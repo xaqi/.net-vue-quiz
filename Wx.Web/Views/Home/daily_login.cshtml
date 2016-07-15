@@ -1,0 +1,75 @@
+﻿@model  Wx.BLL.LoginTimesInfo
+
+@{
+    var configs = ViewBag.DailyLoginBonusConfigs as List<Wx.BLL.DailyLoginBonusConfig>;
+}
+<div id="every_day_login_gift">
+    <template v-if="showEverydayLoginGift">
+        <div class="box" style="display:block;"></div>
+        <div class="layer" style="display:block;" v-if="!messageform.message">
+            <div class="layer-img">
+                <img src="@(ViewBag.imgPath)/time-day.png">
+            </div>
+            <div class="con-layer">
+                <h3>欢迎来到全民菠菜DOTA2专区</h3>
+                <p>DOTA2奋战礼包</p>
+                <table width="90%" border="0" cellspacing="0" cellpadding="0">
+                    <tr class="title">
+                        @foreach (var config in configs)
+                        {
+                        <td class="@(config.IsActive?"day-color":"")">@config.name</td>
+                        }
+                    </tr>
+                    <tr>
+                        @foreach (var config in configs)
+                        {
+                        <td class="@(config.IsActive?"day-color":"")">@(config.golds)金币</td>
+                        }
+                    </tr>
+                </table>
+            </div>
+            <a class="btn-dota" @@click="GetDailyLoginGolds">领  取</a>
+        </div>
+        <div class="layer" style="display:block" v-if="messageform.message">
+            <div class="con-layer">
+                <p style=" font-size:18px; padding:20px 0; margin:0">{{messageform.message}}</p>
+            </div>
+            <div class="bnt-con"><a class="hint-in3" @@click="messageOKClick">确  定</a></div>
+        </div>
+    </template>
+</div>
+
+
+<script>
+    require(["Vue"], function (Vue) {
+        new Vue({
+            el: '#every_day_login_gift',
+            data: {
+                showEverydayLoginGift: true,
+                messageform: {
+                    message: null
+                }
+            },
+            methods: {
+                closeEverydayLoginGift: function () {
+                    this.showEverydayLoginGift = false;
+                },
+                GetDailyLoginGolds: function () {
+                    Vue.http.get('Bonus/GetDailyLoginGolds').then(function (response) {
+                        this.message(response.data.message, response.data.data.close);
+                    }.bind(this));
+                },
+                message: function (message, close) {
+                    this.messageform.message = message;
+                    this.messageform.close = close;
+                },
+                messageOKClick: function () {
+                    this.messageform.message = null;
+                    if (this.messageform.close) {
+                        this.closeEverydayLoginGift();
+                    }
+                }
+            }
+        });
+    });
+</script>

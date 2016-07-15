@@ -1,0 +1,12 @@
+﻿<div>
+    <!--顶部导航-->
+    <header class="header" v-if="apiData">
+        <span class="fl">今日竞猜：{{apiData.today.quizUserCount | money 0}}人，{{apiData.today.quizGolds | money 0}}金币</span>
+        <span class="header-r fr">余额：{{apiData.user.user_balance | money 0}}</span>
+        <a class="rules" href="bet/about"></a>
+    </header>
+    <div class="wrap margin-top58 about" v-if="apiData">
+        {{{apiData.html}}}
+
+    </div>
+</div>

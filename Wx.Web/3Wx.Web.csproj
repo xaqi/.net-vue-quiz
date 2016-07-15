@@ -1,0 +1,728 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{94C3FFA2-6E52-400C-AF22-A5609D29CC70}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Wx.Web</RootNamespace>
+    <AssemblyName>Wx.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.1.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.1.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.8\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Senparc.Weixin, Version=4.5.19.36607, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Senparc.Weixin.4.5.19\lib\net45\Senparc.Weixin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Senparc.Weixin.MP, Version=13.7.9.27026, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Senparc.Weixin.MP.13.7.9\lib\net45\Senparc.Weixin.MP.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Senparc.Weixin.MP.MvcExtension, Version=4.0.1.32125, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Senparc.Weixin.MP.MVC.4.0.2\lib\net45\Senparc.Weixin.MP.MvcExtension.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.1.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebBackgrounder, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebBackgrounder.0.2.0\lib\net40\WebBackgrounder.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="content\error.html" />
+    <Content Include="content\front\common\myloadmore.js" />
+    <Content Include="content\front\common\rws.js" />
+    <Content Include="content\front\common\vue_util.js" />
+    <Content Include="content\front\common\zoompic.js" />
+    <Content Include="content\front\controllers\bet\about.js" />
+    <Content Include="content\front\controllers\changegame.js" />
+    <Content Include="content\front\controllers\bet\history.js" />
+    <Content Include="content\front\controllers\coin\pay.js" />
+    <Content Include="content\front\controllers\coin\redeem_submit.js" />
+    <Content Include="content\front\controllers\coin\redeem.js" />
+    <Content Include="content\front\controllers\coin\record.js" />
+    <Content Include="content\front\controllers\about.js" />
+    <Content Include="content\front\controllers\login.js" />
+    <Content Include="content\front\controllers\invite\qrcode.js" />
+    <Content Include="content\front\controllers\invite\myfriends.js" />
+    <Content Include="content\front\controllers\invite\about.js" />
+    <Content Include="content\front\controllers\invite\index.js" />
+    <Content Include="content\front\controllers\roulette\about.js" />
+    <Content Include="content\front\controllers\roulette_ws.js" />
+    <Content Include="content\front\controllers\user.js" />
+    <Content Include="content\front\controllers\roulette.js" />
+    <Content Include="content\front\controllers\gamelist.js" />
+    <Content Include="content\front\design\hero\about.html" />
+    <Content Include="content\front\design\hero\bootstrap-3.3.5-dist\css\bootstrap-theme.css" />
+    <Content Include="content\front\design\hero\bootstrap-3.3.5-dist\css\bootstrap-theme.min.css" />
+    <Content Include="content\front\design\hero\bootstrap-3.3.5-dist\css\bootstrap.css" />
+    <Content Include="content\front\design\hero\bootstrap-3.3.5-dist\css\bootstrap.min.css" />
+    <Content Include="content\front\design\hero\bootstrap-3.3.5-dist\css\bootstrapValidator.css" />
+    <Content Include="content\front\design\hero\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="content\front\design\hero\bootstrap-3.3.5-dist\js\bootstrap.js" />
+    <Content Include="content\front\design\hero\bootstrap-3.3.5-dist\js\bootstrap.min.js" />
+    <Content Include="content\front\design\hero\bootstrap-3.3.5-dist\js\bootstrapValidator.js" />
+    <Content Include="content\front\design\hero\bootstrap-3.3.5-dist\js\npm.js" />
+    <Content Include="content\front\design\hero\images\about-banner.jpg" />
+    <Content Include="content\front\design\hero\images\about-ico01.png" />
+    <Content Include="content\front\design\hero\images\about-ico02.png" />
+    <Content Include="content\front\design\hero\images\about-ico03.png" />
+    <Content Include="content\front\design\hero\images\about-ico04.png" />
+    <Content Include="content\front\design\hero\images\about-ico05.png" />
+    <Content Include="content\front\design\hero\images\about-ico06.png" />
+    <Content Include="content\front\design\hero\images\back.png" />
+    <Content Include="content\front\design\hero\images\banner.png" />
+    <Content Include="content\front\design\hero\images\bg.jpg" />
+    <Content Include="content\front\design\hero\images\bg01.jpg" />
+    <Content Include="content\front\design\hero\images\btn-bg01.png" />
+    <Content Include="content\front\design\hero\images\btn-bg02.png" />
+    <Content Include="content\front\design\hero\images\first.png" />
+    <Content Include="content\front\design\hero\images\hero-hover.png" />
+    <Content Include="content\front\design\hero\images\hero.png" />
+    <Content Include="content\front\design\hero\images\hero_logo.png" />
+    <Content Include="content\front\design\hero\images\icon01.png" />
+    <Content Include="content\front\design\hero\images\icon02.png" />
+    <Content Include="content\front\design\hero\images\icon03.png" />
+    <Content Include="content\front\design\hero\images\icon04.png" />
+    <Content Include="content\front\design\hero\images\logo_dota.png" />
+    <Content Include="content\front\design\hero\images\nav-bg.png" />
+    <Content Include="content\front\design\hero\images\nva-hover01.png" />
+    <Content Include="content\front\design\hero\images\nva-hover02.png" />
+    <Content Include="content\front\design\hero\images\nva-hover03.png" />
+    <Content Include="content\front\design\hero\images\nva01.png" />
+    <Content Include="content\front\design\hero\images\nva02.png" />
+    <Content Include="content\front\design\hero\images\nva03.png" />
+    <Content Include="content\front\design\hero\images\successful.png" />
+    <Content Include="content\front\design\hero\images\time-day.png" />
+    <Content Include="content\front\design\hero\images\user-banner.png" />
+    <Content Include="content\front\design\hero\images\user-img.jpg" />
+    <Content Include="content\front\design\hero\images\user-inco.png" />
+    <Content Include="content\front\design\hero\images\user01.png" />
+    <Content Include="content\front\design\hero\images\user02.png" />
+    <Content Include="content\front\design\hero\img\1.jpg" />
+    <Content Include="content\front\design\hero\img\2.jpg" />
+    <Content Include="content\front\design\hero\img\3.jpg" />
+    <Content Include="content\front\design\hero\img\4.jpg" />
+    <Content Include="content\front\design\hero\img\5.jpg" />
+    <Content Include="content\front\design\hero\img\6.jpg" />
+    <Content Include="content\front\design\hero\img\7.jpg" />
+    <Content Include="content\front\design\hero\img\8.jpg" />
+    <Content Include="content\front\design\hero\img\9.jpg" />
+    <Content Include="content\front\design\hero\index.html" />
+    <Content Include="content\front\design\hero\js\comm.js" />
+    <Content Include="content\front\design\hero\js\jquery-1.10.2.min.js" />
+    <Content Include="content\front\design\hero\js\jquery-1.7.1.min.js" />
+    <Content Include="content\front\design\hero\login.html" />
+    <Content Include="content\front\design\hero\message.html" />
+    <Content Include="content\front\design\hero\style\alert.css" />
+    <Content Include="content\front\design\hero\style\css.css" />
+    <Content Include="content\front\design\hero\style\style.css" />
+    <Content Include="content\front\design\hero\个人中心.html" />
+    <Content Include="content\front\design\hero\充值成功.html" />
+    <Content Include="content\front\design\hero\战友招募.html" />
+    <Content Include="content\front\design\hero\战友招募说明.html" />
+    <Content Include="content\front\design\hero\新手礼包.html" />
+    <Content Include="content\front\design\hero\每日登录界面.html" />
+    <Content Include="content\front\design\hero\竞猜成功.html" />
+    <Content Include="content\front\design\hero\竞猜规则.html" />
+    <Content Include="content\front\design\hero\英雄猜.html" />
+    <Content Include="content\front\design\hero\金币充值.html" />
+    <Content Include="content\front\design\hero\金币兑换.html" />
+    <Content Include="content\front\design\hero\金币明细.html" />
+    <Content Include="content\front\design\images\about-banner.jpg" />
+    <Content Include="content\front\design\images\about-ico01.png" />
+    <Content Include="content\front\design\images\about-ico02.png" />
+    <Content Include="content\front\design\images\about-ico03.png" />
+    <Content Include="content\front\design\images\about-ico04.png" />
+    <Content Include="content\front\design\images\about-ico05.png" />
+    <Content Include="content\front\design\images\about-ico06.png" />
+    <Content Include="content\front\design\images\back.png" />
+    <Content Include="content\front\design\images\banner.png" />
+    <Content Include="content\front\design\images\bg.jpg" />
+    <Content Include="content\front\design\images\bg01.jpg" />
+    <Content Include="content\front\design\images\btn-bg01.png" />
+    <Content Include="content\front\design\images\btn-bg02.png" />
+    <Content Include="content\front\design\images\btn-bg03.png" />
+    <Content Include="content\front\design\images\first.png" />
+    <Content Include="content\front\design\images\hero_logo.png" />
+    <Content Include="content\front\design\images\icon01.png" />
+    <Content Include="content\front\design\images\icon02.png" />
+    <Content Include="content\front\design\images\icon03.png" />
+    <Content Include="content\front\design\images\icon04.png" />
+    <Content Include="content\front\design\images\icon_img.jpg" />
+    <Content Include="content\front\design\images\IG-logo.png" />
+    <Content Include="content\front\design\images\logo_dota.png" />
+    <Content Include="content\front\design\images\message.png" />
+    <Content Include="content\front\design\images\nav-bg.png" />
+    <Content Include="content\front\design\images\nva-hover01.png" />
+    <Content Include="content\front\design\images\nva-hover02.png" />
+    <Content Include="content\front\design\images\nva-hover03.png" />
+    <Content Include="content\front\design\images\nva01.png" />
+    <Content Include="content\front\design\images\nva02.png" />
+    <Content Include="content\front\design\images\nva03.png" />
+    <Content Include="content\front\design\images\phone.png" />
+    <Content Include="content\front\design\images\roulette\bg-roulette-roll-lol.jpg" />
+    <Content Include="content\front\design\images\shicai-logo.png" />
+    <Content Include="content\front\design\images\successful.png" />
+    <Content Include="content\front\design\images\time-day.png" />
+    <Content Include="content\front\design\images\user-banner.png" />
+    <Content Include="content\front\design\images\user-img.jpg" />
+    <Content Include="content\front\design\images\user-inco.png" />
+    <Content Include="content\front\design\images\user.png" />
+    <Content Include="content\front\design\images\user01.png" />
+    <Content Include="content\front\design\images\user02.png" />
+    <Content Include="content\front\design\index.html" />
+    <Content Include="content\front\design\style\style.css" />
+    <Content Include="content\front\design\人工客服充值.html" />
+    <Content Include="content\front\design\我的二维码.html" />
+    <Content Include="content\front\design\我的战友.html" />
+    <Content Include="content\front\design\确认兑换.html" />
+    <Content Include="content\front\design\竞猜历史.html" />
+    <Content Include="content\front\design\英雄猜.html" />
+    <Content Include="content\front\gamelist.html" />
+    <Content Include="content\front\scripts\bundle.js" />
+    <Content Include="content\front\scripts\VueIndicator.css" />
+    <Content Include="content\front\scripts\VueIndicator.js" />
+    <Content Include="content\front\scripts\linq.js" />
+    <Content Include="content\front\scripts\MintLoadmore.css" />
+    <Content Include="content\front\scripts\routes.js" />
+    <Content Include="content\front\controllers\index.js" />
+    <Content Include="content\front\controllers\empty.js" />
+    <Content Include="content\front\design\about.html" />
+    <Content Include="content\front\design\bootstrap-3.3.5-dist\css\bootstrap-theme.css" />
+    <Content Include="content\front\design\bootstrap-3.3.5-dist\css\bootstrap-theme.min.css" />
+    <Content Include="content\front\design\bootstrap-3.3.5-dist\css\bootstrap.css" />
+    <Content Include="content\front\design\bootstrap-3.3.5-dist\css\bootstrap.min.css" />
+    <Content Include="content\front\design\bootstrap-3.3.5-dist\css\bootstrapValidator.css" />
+    <Content Include="content\front\design\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="content\front\design\bootstrap-3.3.5-dist\js\bootstrap.js" />
+    <Content Include="content\front\design\bootstrap-3.3.5-dist\js\bootstrap.min.js" />
+    <Content Include="content\front\design\bootstrap-3.3.5-dist\js\bootstrapValidator.js" />
+    <Content Include="content\front\design\bootstrap-3.3.5-dist\js\npm.js" />
+    <Content Include="content\front\design\img\1.jpg" />
+    <Content Include="content\front\design\img\2.jpg" />
+    <Content Include="content\front\design\img\3.jpg" />
+    <Content Include="content\front\design\img\4.jpg" />
+    <Content Include="content\front\design\img\5.jpg" />
+    <Content Include="content\front\design\img\6.jpg" />
+    <Content Include="content\front\design\img\7.jpg" />
+    <Content Include="content\front\design\img\8.jpg" />
+    <Content Include="content\front\design\img\9.jpg" />
+    <Content Include="content\front\design\js\comm.js" />
+    <Content Include="content\front\design\js\jquery-1.10.2.min.js" />
+    <Content Include="content\front\design\js\jquery-1.7.1.min.js" />
+    <Content Include="content\front\design\login.html" />
+    <Content Include="content\front\design\message.html" />
+    <Content Include="content\back\scripts\vue.js" />
+    <Content Include="content\front\design\bootstrap.css" />
+    <Content Include="content\front\design\bootstrap.min.css" />
+    <Content Include="content\front\design\script\jquery-1.10.2.min.js" />
+    <Content Include="content\front\design\script\ui\1.10.3\jquery-ui.js" />
+    <Content Include="content\back\se7en\buttons.html" />
+    <Content Include="content\back\se7en\components.html" />
+    <Content Include="content\back\se7en\datatables-editable.html" />
+    <Content Include="content\back\se7en\datatables.html" />
+    <Content Include="content\back\se7en\form-advanced.html" />
+    <Content Include="content\back\se7en\form-components.html" />
+    <Content Include="content\back\se7en\grid.html" />
+    <Content Include="content\back\se7en\images\alpha.png" />
+    <Content Include="content\back\se7en\images\avatar-female.jpg" />
+    <Content Include="content\back\se7en\images\avatar-female.png" />
+    <Content Include="content\back\se7en\images\avatar-female2.png" />
+    <Content Include="content\back\se7en\images\avatar-male.jpg" />
+    <Content Include="content\back\se7en\images\avatar-male2.png" />
+    <Content Include="content\back\se7en\images\chat-left.png" />
+    <Content Include="content\back\se7en\images\chat-right%402x.png" />
+    <Content Include="content\back\se7en\images\chat-right.png" />
+    <Content Include="content\back\se7en\images\checkmark.png" />
+    <Content Include="content\back\se7en\images\icon-search%402x.png" />
+    <Content Include="content\back\se7en\images\icon-search.png" />
+    <Content Include="content\back\se7en\images\info-data-sprite%402x.png" />
+    <Content Include="content\back\se7en\images\info-data-sprite.png" />
+    <Content Include="content\back\se7en\images\nav-sprite%402x.png" />
+    <Content Include="content\back\se7en\images\nav-sprite.png" />
+    <Content Include="content\back\se7en\images\noimage.gif" />
+    <Content Include="content\back\se7en\images\se7en-logo%402x.png" />
+    <Content Include="content\back\se7en\images\se7en-logo.png" />
+    <Content Include="content\back\se7en\images\select2.png" />
+    <Content Include="content\back\se7en\images\social-image.jpg" />
+    <Content Include="content\back\se7en\index.html" />
+    <Content Include="content\back\se7en\javascripts\bootstrap-colorpicker.js" />
+    <Content Include="content\back\se7en\javascripts\bootstrap-datepicker.js" />
+    <Content Include="content\back\se7en\javascripts\bootstrap-fileupload.js" />
+    <Content Include="content\back\se7en\javascripts\bootstrap-switch.min.js" />
+    <Content Include="content\back\se7en\javascripts\bootstrap-timepicker.js" />
+    <Content Include="content\back\se7en\javascripts\bootstrap.min.js" />
+    <Content Include="content\back\se7en\javascripts\datatable-editable.js" />
+    <Content Include="content\back\se7en\javascripts\date.js" />
+    <Content Include="content\back\se7en\javascripts\daterange-picker.js" />
+    <Content Include="content\back\se7en\javascripts\excanvas.min.js" />
+    <Content Include="content\back\se7en\javascripts\fitvids.js" />
+    <Content Include="content\back\se7en\javascripts\fullcalendar.min.js" />
+    <Content Include="content\back\se7en\javascripts\gcal.js" />
+    <Content Include="content\back\se7en\javascripts\isotope_extras.js" />
+    <Content Include="content\back\se7en\javascripts\jquery.bootstrap.wizard.js" />
+    <Content Include="content\back\se7en\javascripts\jquery.dataTables.min.js" />
+    <Content Include="content\back\se7en\javascripts\jquery.easy-pie-chart.js" />
+    <Content Include="content\back\se7en\javascripts\jquery.fancybox.pack.js" />
+    <Content Include="content\back\se7en\javascripts\jquery.inputmask.min.js" />
+    <Content Include="content\back\se7en\javascripts\jquery.isotope.min.js" />
+    <Content Include="content\back\se7en\javascripts\jquery.mousewheel.js" />
+    <Content Include="content\back\se7en\javascripts\jquery.sparkline.min.js" />
+    <Content Include="content\back\se7en\javascripts\jquery.validate.js" />
+    <Content Include="content\back\se7en\javascripts\jquery.vmap.min.js" />
+    <Content Include="content\back\se7en\javascripts\jquery.vmap.sampledata.js" />
+    <Content Include="content\back\se7en\javascripts\jquery.vmap.world.js" />
+    <Content Include="content\back\se7en\javascripts\main.js" />
+    <Content Include="content\back\se7en\javascripts\modernizr.custom.js" />
+    <Content Include="content\back\se7en\javascripts\morris.min.js" />
+    <Content Include="content\back\se7en\javascripts\raphael.min.js" />
+    <Content Include="content\back\se7en\javascripts\respond.js" />
+    <Content Include="content\back\se7en\javascripts\select2.js" />
+    <Content Include="content\back\se7en\javascripts\selectivizr-min.js" />
+    <Content Include="content\back\se7en\javascripts\skycons.js" />
+    <Content Include="content\back\se7en\javascripts\styleswitcher.js" />
+    <Content Include="content\back\se7en\javascripts\summernote.min.js" />
+    <Content Include="content\back\se7en\javascripts\typeahead.js" />
+    <Content Include="content\back\se7en\javascripts\wysiwyg.js" />
+    <Content Include="content\back\se7en\social.html" />
+    <Content Include="content\back\se7en\stylesheets\bootstrap-switch.css" />
+    <Content Include="content\back\se7en\stylesheets\bootstrap.min.css" />
+    <Content Include="content\back\se7en\stylesheets\colorpicker.css" />
+    <Content Include="content\back\se7en\stylesheets\color\gray.css" />
+    <Content Include="content\back\se7en\stylesheets\color\green.css" />
+    <Content Include="content\back\se7en\stylesheets\color\magenta.css" />
+    <Content Include="content\back\se7en\stylesheets\color\orange.css" />
+    <Content Include="content\back\se7en\stylesheets\datatables.css" />
+    <Content Include="content\back\se7en\stylesheets\datepicker.css" />
+    <Content Include="content\back\se7en\stylesheets\daterange-picker.css" />
+    <Content Include="content\back\se7en\stylesheets\font-awesome.css" />
+    <Content Include="content\back\se7en\stylesheets\fullcalendar.css" />
+    <Content Include="content\back\se7en\stylesheets\isotope.css" />
+    <Content Include="content\back\se7en\stylesheets\jquery.fancybox.css" />
+    <Content Include="content\back\se7en\stylesheets\morris.css" />
+    <Content Include="content\back\se7en\stylesheets\pygments.css" />
+    <Content Include="content\back\se7en\stylesheets\se7en-font.css" />
+    <Content Include="content\back\se7en\stylesheets\select2.css" />
+    <Content Include="content\back\se7en\stylesheets\style.css" />
+    <Content Include="content\back\se7en\stylesheets\summernote.css" />
+    <Content Include="content\back\se7en\stylesheets\timepicker.css" />
+    <Content Include="content\back\se7en\stylesheets\typeahead.css" />
+    <Content Include="content\back\se7en\stylesheets\wizard.css" />
+    <Content Include="content\back\se7en\tables.html" />
+    <Content Include="content\back\se7en\typo.html" />
+    <Content Include="content\back\se7en\widgets.html" />
+    <Content Include="content\front\design\Site.css" />
+    <Content Include="content\front\design\style\alert.css" />
+    <Content Include="content\front\design\style\css.css" />
+    <Content Include="content\front\design\个人中心.html" />
+    <Content Include="content\front\design\充值成功.html" />
+    <Content Include="content\front\design\战友招募.html" />
+    <Content Include="content\front\design\战友招募说明.html" />
+    <Content Include="content\front\design\新手礼包.html" />
+    <Content Include="content\front\design\每日登录界面.html" />
+    <Content Include="content\front\design\竞猜成功.html" />
+    <Content Include="content\front\design\竞猜规则.html" />
+    <Content Include="content\front\design\roulette.html" />
+    <Content Include="content\front\design\金币充值.html" />
+    <Content Include="content\front\design\金币兑换.html" />
+    <Content Include="content\front\design\金币明细.html" />
+    <Content Include="content\front\scripts\page.js" />
+    <Content Include="content\front\scripts\require.js" />
+    <Content Include="content\front\scripts\rw.js" />
+    <Content Include="content\front\scripts\text.js" />
+    <Content Include="content\front\scripts\MintLoadmore.js" />
+    <Content Include="content\front\scripts\vue_focus.js" />
+    <Content Include="content\front\scripts\vue_resource.js" />
+    <Content Include="content\front\scripts\vue.js" />
+    <Content Include="content\front\views\bet\about.html" />
+    <Content Include="content\front\views\about.html" />
+    <Content Include="content\front\views\bet\history.html" />
+    <Content Include="content\front\views\coin\pay.html" />
+    <Content Include="content\front\views\coin\redeem_submit.html" />
+    <Content Include="content\front\views\coin\redeem.html" />
+    <Content Include="content\front\views\coin\record.html" />
+    <Content Include="content\front\views\login.html" />
+    <Content Include="content\front\views\invite\qrcode.html" />
+    <Content Include="content\front\views\invite\myfriends.html" />
+    <Content Include="content\front\views\invite\about.html" />
+    <Content Include="content\front\views\invite\index.html" />
+    <Content Include="content\front\views\roulette\about.html" />
+    <Content Include="content\front\views\user.html" />
+    <Content Include="content\front\views\roulette.html" />
+    <Content Include="content\front\views\gamelist.html" />
+    <Content Include="content\front\views\index.html" />
+    <Content Include="content\front\views\util\app.css" />
+    <Content Include="content\front\views\util\bg-roulette-roll.jpg" />
+    <Content Include="content\front\views\util\img\01s.jpg" />
+    <Content Include="content\front\views\util\img\02s.jpg" />
+    <Content Include="content\front\views\util\img\03s.jpg" />
+    <Content Include="content\front\views\util\img\04s.jpg" />
+    <Content Include="content\front\views\util\img\05s.jpg" />
+    <Content Include="content\front\views\util\img\06s.jpg" />
+    <Content Include="content\front\views\util\img\07s.jpg" />
+    <Content Include="content\front\views\util\img\08s.jpg" />
+    <Content Include="content\front\views\util\index.html" />
+    <Content Include="content\front\views\util\jquery-1.3.2.min.js" />
+    <Content Include="content\front\views\util\jquery.kxbdmarquee.js" />
+    <Content Include="content\front\views\util\js\jquery-1.3.2.min.js" />
+    <Content Include="content\front\views\util\js\jquery.kxbdmarquee.js" />
+    <Content Include="content\front\views\util\roulette_popups.html" />
+    <Content Include="Controllers\Weixin\Senparc.Weixin.MP.Sample.CommonService\Download\readme.txt" />
+    <Content Include="images\badage-hero.png" />
+    <Content Include="images\bg-daily-reward.png" />
+    <Content Include="images\bg-gold.png" />
+    <Content Include="images\bg-profile.png" />
+    <Content Include="images\bg-recap-title.png" />
+    <Content Include="images\bg-roulette-mask.png" />
+    <Content Include="content\front\design\images\roulette\bg-roulette-roll-dota.jpg" />
+    <Content Include="images\bg-roulette.png" />
+    <Content Include="images\icon-about.png" />
+    <Content Include="images\icon-bet-active.png" />
+    <Content Include="images\icon-bet-history.png" />
+    <Content Include="images\icon-bet-setting.png" />
+    <Content Include="images\icon-bet.png" />
+    <Content Include="images\icon-boss.png" />
+    <Content Include="images\icon-check.png" />
+    <Content Include="images\icon-clock.png" />
+    <Content Include="images\icon-close-extrem-light.png" />
+    <Content Include="images\icon-end.png" />
+    <Content Include="images\icon-gold-detail.png" />
+    <Content Include="images\icon-guess.png" />
+    <Content Include="images\icon-hot.png" />
+    <Content Include="images\icon-loading.png" />
+    <Content Include="images\icon-mouse-round.png" />
+    <Content Include="images\icon-mouse.png" />
+    <Content Include="images\icon-new.png" />
+    <Content Include="images\icon-play.png" />
+    <Content Include="images\icon-popular.png" />
+    <Content Include="images\icon-profile-active.png" />
+    <Content Include="images\icon-profile.png" />
+    <Content Include="images\icon-rectangle-disc.png" />
+    <Content Include="images\icon-redeem-record.png" />
+    <Content Include="images\icon-roulette-active.png" />
+    <Content Include="images\icon-roulette.png" />
+    <Content Include="images\icon-shop-active.png" />
+    <Content Include="images\icon-shop.png" />
+    <Content Include="images\icon-victory.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="content\front\views\util\popups.html" />
+    <Content Include="content\front\views\util\rt.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Areas\Admin\Views\Home\index.html" />
+    <Content Include="content\back\scripts\bootstrap.js" />
+    <Content Include="content\back\scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="content\front\design\bootstrap-3.3.5-dist\css\bootstrap-theme.css.map" />
+    <Content Include="content\front\design\bootstrap-3.3.5-dist\css\bootstrap.css.map" />
+    <Content Include="content\front\design\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="content\front\design\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="content\front\design\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="content\front\design\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="appsettings\appsettings.local.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="appsettings\appsettings.prod.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="appsettings\appsettings.qa.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="appsettings\appsettings.qa.test.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="content\back\scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="content\back\scripts\jquery-1.10.2.js" />
+    <Content Include="content\back\scripts\jquery-1.10.2.min.js" />
+    <Content Include="content\back\scripts\modernizr-2.6.2.js" />
+    <Content Include="content\back\scripts\require.js" />
+    <Content Include="roll.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\Filters\AuthFilter.cs" />
+    <Compile Include="App_Start\Filters\ApiAuthFilter.cs" />
+    <Compile Include="App_Start\Jobs\RouletteJob.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="App_Start\Jobs\WebBackgrounderSetup.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\API\BaseApiController.cs" />
+    <Compile Include="Areas\API\EmptyController.cs" />
+    <Compile Include="Areas\API\InviteController.cs" />
+    <Compile Include="Areas\API\CoinController.cs" />
+    <Compile Include="Areas\API\RouletteController.cs" />
+    <Compile Include="Areas\API\ArtController.cs" />
+    <Compile Include="Areas\API\BonusController.cs" />
+    <Compile Include="Areas\API\BetController.cs" />
+    <Compile Include="Areas\API\UserController.cs" />
+    <Compile Include="Areas\API\Roulette__Controller.cs" />
+    <Compile Include="Areas\API\QuizController.cs" />
+    <Compile Include="Areas\Hubs\RouletteHub.cs" />
+    <Compile Include="Controllers\CoinController.cs" />
+    <Compile Include="Controllers\SysController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\Auth\OAuth2Controller.cs" />
+    <Compile Include="Controllers\InviteController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\Weixin\Senparc.Weixin.MP.Sample.CommonService\Download\CodeRecord.cs" />
+    <Compile Include="Controllers\Weixin\Senparc.Weixin.MP.Sample.CommonService\Download\Config.cs" />
+    <Compile Include="Controllers\Weixin\Senparc.Weixin.MP.Sample.CommonService\Download\ConfigHelper.cs" />
+    <Compile Include="Controllers\Weixin\Senparc.Weixin.MP.Sample.CommonService\EventService.cs" />
+    <Compile Include="Controllers\Weixin\Senparc.Weixin.MP.Sample.CommonService\LocationService.cs" />
+    <Compile Include="Controllers\Weixin\Senparc.Weixin.MP.Sample.CommonService\MessageHandlers\CustomMessageHandler\CustomMessageContext.cs" />
+    <Compile Include="Controllers\Weixin\Senparc.Weixin.MP.Sample.CommonService\MessageHandlers\CustomMessageHandler\CustomMessageHandler.cs" />
+    <Compile Include="Controllers\Weixin\CustomMessageHandler_Events_Partial.cs" />
+    <Compile Include="Controllers\Weixin\Senparc.Weixin.MP.Sample.CommonService\MessageHandlers\CustomMessageHandler\CustomMessageHandler_Events.cs" />
+    <Compile Include="Controllers\Weixin\Senparc.Weixin.MP.Sample.CommonService\OpenTicket\OpenTicketHelper.cs" />
+    <Compile Include="Controllers\Weixin\Senparc.Weixin.MP.Sample.CommonService\Utilities\Server.cs" />
+    <Compile Include="Controllers\Weixin\WeixinController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="content\back\se7en\font\fontawesome-webfont.woff" />
+    <Content Include="content\back\se7en\font\se7en.woff" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="content\back\scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Home\vue.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="content\front\design\hero\bootstrap-3.3.5-dist\css\bootstrap-theme.css.map" />
+    <Content Include="content\front\design\hero\bootstrap-3.3.5-dist\css\bootstrap.css.map" />
+    <Content Include="content\front\design\hero\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="content\front\design\hero\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="content\front\design\hero\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="content\front\design\hero\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Properties\PublishProfiles\wx.prod.pubxml" />
+    <Content Include="appsettings\appsettings.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Invite\Index.cshtml" />
+    <Content Include="Views\Home\new_user_welcome.cshtml" />
+    <Content Include="Views\Home\daily_login.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\Weixin\Senparc.Weixin.MP.Sample.CommonService\MessageHandlers\CustomThirdPartyMessageHandlers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\0Wx.Common\0Wx.Common.csproj">
+      <Project>{1aedcf9d-c9bc-42ae-a1ef-b078538a301e}</Project>
+      <Name>0Wx.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wx.BLL\2Wx.BLL.csproj">
+      <Project>{7f388aaf-de3d-4177-9d3b-1ba8d72ad72e}</Project>
+      <Name>2Wx.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wx.DAL\1Wx.DAL.csproj">
+      <Project>{786bd13c-0c27-4e45-b6a5-6cad4e736437}</Project>
+      <Name>1Wx.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptModuleKind>none</TypeScriptModuleKind>
+    <TypeScriptSourceMap>False</TypeScriptSourceMap>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52058</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://local.esports666.com/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

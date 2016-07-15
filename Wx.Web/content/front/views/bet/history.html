@@ -1,0 +1,110 @@
+﻿<div>
+    <header class="header" v-if="apiData">
+        <span class="fl">今日竞猜：{{apiData.today.quizUserCount | money 0}}人，{{apiData.today.quizGolds | money 0}}金币</span>
+        <span class="header-r fr">余额：{{apiData.user.user_balance | money 0}}</span>
+        <a class="rules" href="bet/about"></a>
+    </header>
+
+    <myloadmore v-if="tabIndex==0" url="bet/getBetHistoryByPage_Tab0" list="pages" :total="total" ps="10">
+        <div class="wrap margin-top58 about rules-ab tabcont" v-if="apiData">
+            <ul class="nav nav-tabs" role="tablist">
+                <li v-for="tab in tabs" role="presentation" :class="{active:tabIndex==tab.index}">
+                    <a :href="tab.href" aria-controls="home" role="tab" data-toggle="tab">{{tab.name}}</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="profile">
+                    <template v-for="page in pages">
+                        <dl v-for="record in page.rows" :class="{'bg-quiz':true}">
+                            <dd>{{ record.createTime | datetime}}</dd>
+                            <dt>{{record.game_name+' '+record.bet_name}}</dt>
+                            <div class="clearfix"></div>
+                            <div class="row">
+                                <div class="col-md">{{record.quiz_subject}}</div>
+                                <div class="col-md">竞猜：{{record.option_subject}}（{{record.odds | money 2}}）</div>
+                                <div class="col-md">结果：{{record.UserOptionStatus_cn}}</div>
+                                <div class="col-md">
+                                    投注：{{record.golds | money 2}}金币
+                                    <span v-if="record.UserOptionStatus==1" class="Gold">+{{record.golds * record.odds | money 2}}金币</span>
+                                    <span v-if="record.UserOptionStatus==2" class="sub-Gold">-{{record.golds}}金币</span>
+                                </div>
+                            </div>
+                        </dl>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </myloadmore>
+
+
+
+
+
+
+
+
+
+
+
+    <myloadmore v-if="tabIndex==1" url="bet/getBetHistoryByPage_Tab1" list="pages" :total="total" ps="10">
+        <div class="wrap margin-top58 about rules-ab tabcont" v-if="apiData">
+            <ul class="nav nav-tabs" role="tablist">
+                <li v-for="tab in tabs" role="presentation" :class="{active:tabIndex==tab.index}">
+                    <a :href="tab.href" aria-controls="home" role="tab" data-toggle="tab">{{tab.name}}</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="profile">
+                    <template v-for="page in pages">
+                        <dl v-for="record in page.rows">
+                            <dd>{{ record.createTime | datetime}}</dd>
+                            <dt>{{record.game_name+' '+record.bet_name}}</dt>
+                            <div class="clearfix"></div>
+                            <div class="row">
+                                <div class="col-md">{{record.quiz_subject}}</div>
+                                <div class="col-md">竞猜：{{record.option_subject}}（{{record.odds | money 2}}）</div>
+                                <div class="col-md">结果：{{record.UserOptionStatus_cn}}</div>
+                                <div class="col-md">
+                                    投注：{{record.golds | money 2}}金币
+                                    <span v-if="record.UserOptionStatus==1" class="Gold">+{{record.golds * record.odds | money 2}}金币</span>
+                                    <span v-if="record.UserOptionStatus==2" class="sub-Gold">-{{record.golds}}金币</span>
+                                </div>
+                            </div>
+                        </dl>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </myloadmore>
+
+
+    <myloadmore v-if="tabIndex==2" url="bet/getBetHistoryByPage_Tab2" list="pages" :total="total" ps="10">
+        <div class="wrap margin-top58 about rules-ab tabcont" v-if="apiData">
+            <ul class="nav nav-tabs" role="tablist">
+                <li v-for="tab in tabs" role="presentation" :class="{active:tabIndex==tab.index}">
+                    <a :href="tab.href" aria-controls="home" role="tab" data-toggle="tab">{{tab.name}}</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="profile">
+                    <template v-for="page in pages">
+                        <dl v-for="record in page.rows">
+                            <dd>{{ record.createTime | datetime}}</dd>
+                            <dt>{{record.gameTypeName + ' ' +record.sscPeriod + '期'}}</dt>
+                            <div class="clearfix"></div>
+                            <div class="row">
+                                <div class="col-md">竞猜：{{record.propertys}}（{{record.odds | money 2}}）</div>
+                                <div class="col-md">结果：{{record.rouletteSubmitStatus_cn}}</div>
+                                <div class="col-md">
+                                    投注：{{record.golds | money 0}}金币
+                                    <span v-if="record.rouletteSubmitStatus==1" class="Gold">+{{record.golds * record.odds | money 2}}金币</span>
+                                    <span v-if="record.rouletteSubmitStatus==2" class="sub-Gold">-{{record.golds}}金币</span>
+                                </div>
+                            </div>
+                        </dl>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </myloadmore>
+</div>

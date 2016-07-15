@@ -1,0 +1,54 @@
+﻿<div>
+    <template v-if="data">
+        <header class="header">
+            <span class="fl">今日竞猜：{{data.today.quizUserCount}}人，{{data.today.quizGolds}}金币</span>
+            <span class="header-r fr">余额：{{data.user.user_balance}}</span>
+            <a class="rules" href="bet/about"></a>
+        </header>
+        <div class="wrap">
+            <div class="row" v-for="quiz in data.quizs">
+                <div class="col-md-3 item-user">
+                    <a @click.stop="avatarImageClick">
+                        <span>
+                            <img v-bind:src="quiz.game.team1.avatar">
+                        </span>
+                        {{quiz.game.team1.name}}
+                    </a>
+                    <i class="item-icon"><img src="/content/front/design/images/icon02.png"></i>
+                    <span class="live"></span>
+                </div>
+                <div class="col-md-9 item-con">
+                    <dl>
+                        <dt>
+                            <a class="btn-win" @click.stop="optionClick(quiz,quiz.options[0],quiz.options[1])">
+                                {{quiz.options[0].subject}}
+                                <label>{{quiz.options[0].odds}}</label>
+                            </a>
+                        </dt>
+                        <dd>
+                            <h4>{{quiz.bet.startTime | time}}/{{quiz.subject}}</h4>
+                            <div class="progress">
+                                <div class="progress-bar" v-bind:style="quiz | process 0 | persentWidth 'width'" role="progressbar" aria-valuenow="{{quiz|process 0}}" aria-valuemin="0" aria-valuemax="100">
+                                    <span class="sr-only" v-bind:style="quiz | process 0 | persentWidth 'left'">{{quiz|process 0|money 0}}%</span>
+                                    <a class="btn_add" href="javascript:void(0);">+</a> 
+                                </div>
+                                 <a class="btn_add1" href="javascript:void(0);">+</a> 
+                            </div>
+                            <p>{{quiz.options[0].userCount+quiz.options[1].userCount}}人 - {{quiz.options[0].totalGolds+quiz.options[1].totalGolds}}金币</p>
+                        </dd>
+                        <dt>
+                            <a class="btn-win" @click.stop="optionClick(quiz,quiz.options[1],quiz.options[0])">
+                                {{quiz.options[1].subject}}
+                                <label>{{quiz.options[1].odds}}</label>
+                            </a>
+                        </dt>
+                    </dl>
+                    <span class="home-alt o-alert">竞猜中</span>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template v-if="!data">
+        loading....
+    </template>
+</div>
