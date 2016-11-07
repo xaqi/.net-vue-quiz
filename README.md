@@ -1,6 +1,16 @@
 # .net-vue-quiz
 游戏竞猜微信公众平台源码
 
+Vue Templates:  <a href="https://github.com/xaqi/.net-vue-quiz/tree/master/Wx.Web/content/front/views">Wx.Web/content/front/views</a>
+
+Vue View Models:  <a href="https://github.com/xaqi/.net-vue-quiz/tree/master/Wx.Web/content/front/controllers">Wx.Web/content/front/controllers</a>
+
+Web API:  <a href="https://github.com/xaqi/.net-vue-quiz/tree/master/Wx.Web/Areas/API">Wx.Web/Areas/API</a>
+
+微信登录、支付接口：<a href="https://github.com/xaqi/.net-vue-quiz/tree/master/Wx.Web/Controllers/Weixin">Wx.Web/Controllers/Weixin</a>
+
+
+
 # 首页
  <img src="http://xaqi.github.io/1.jpg" width="250" alt="首页" align=center />
 # 英雄猜
