@@ -1,5 +1,5 @@
 # .net-vue-quiz
-游戏竞猜微信公众平台源码
+游戏竞猜微信公众平台源码，演示地址：http://182.61.35.188:8081
 
 Vue Templates:  <a href="https://github.com/xaqi/.net-vue-quiz/tree/master/Wx.Web/content/front/views">Wx.Web/content/front/views</a>
 
